@@ -3,26 +3,26 @@ class receptora{
         this.valor=valor;
     };
     encenderLinea(){
-        this.valor.style.borderTopColor="green";
+        this.valor.style.borderTopColor="red";
     }
     encenderFlecha(){
-        this.valor.style.borderTopColor="green";
-        this.valor.style.borderRightColor="green";
+        this.valor.style.borderTopColor="red";
+        this.valor.style.borderRightColor="red";
     }
     encenderEstado(){
-        this.valor.style.borderColor="green";
+        this.valor.style.borderColor="red";
     }
     encenderLineaCurva(){
         let ctx=this.valor.getContext("2d");
-        ctx.strokeStyle = "green";
+        ctx.strokeStyle = "red";
         ctx.stroke();
     }    
     encenderEstadoAceptacion(){
-        this.valor.style.borderColor="green";
-        this.valor.style.outlineColor="green";
+        this.valor.style.borderColor="red";
+        this.valor.style.outlineColor="red";
     }
     encenderTransicion(){
-        this.valor.style.color="green"
+        this.valor.style.color="red"
     }
 
 }
