@@ -448,3 +448,4 @@ function retrasoSegundos() {
     }
     return  segundos; 
 }
+

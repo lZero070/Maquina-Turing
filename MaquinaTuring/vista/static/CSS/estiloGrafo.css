@@ -213,3 +213,14 @@ th{
     margin-top: 10mm;
     margin-bottom: 10mm;
 }
+
+#cintaContainer {
+    width: 100%; /* Ancho completo del contenedor */
+    overflow-y: hidden; 
+    overflow-x: scroll;
+    white-space: nowrap; /* Evita saltos de línea dentro del contenedor */
+    border: 1px solid #ccc; /* Opcional: Agrega un borde al contenedor para resaltar el área desplazable */
+}
+#contCinta {
+    width: 100%;
+}

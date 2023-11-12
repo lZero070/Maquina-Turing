@@ -27,10 +27,9 @@
     <label for="evaluarPaso" id="eleccionEval">	&#191;evaluar paso a paso?</label>
     <select name="evaluarPaso" id="evaluarPaso">
         <option value="no">No</option>
-        <option value="si">Si</option>
+        <option value="si" selected>Si</option>
     </select>
-    <button type="button" id="botonPaso" onclick="controlPasoSeleccionado('null')">Ok</button>
-    <a id="pasoSelec">{paso a paso:no}</a>
+    <a id="pasoSelec">{paso a paso:si}</a>
     <br>
     <label for="velocidad" id="eleccionVel">Elige la velocidad de ejecucion del grafo y la cinta:</label>
     <input type="range" name="velocidad" id="velocidad" min="0" max="10" value="" onchange="velocidadEjecucion('null')">
@@ -58,23 +57,25 @@
         <span class="flecha" id="f3"></span>
         <span class="circulo" id="q3">q3</span>
     </section>
-    <svg xmlns="http://www.w3.org/2000/svg" width="95%" viewBox="0 0 870 70" id="contCinta">
-        <g id="cinta" transform="translate(0 10)">
-            <g class="simbolo" transform="translate(380)">
-                <rect class="cuadro" width="50" height="50"></rect>
-                <text class="letraCin" x="20" y="33"></text>
+    <div id="cintaContainer" style="width: 100%; overflow: hidden;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="70" id="contCinta">
+            <g id="cinta" transform="translate(0 10)">
+                <g class="simbolo" transform="translate(380)">
+                    <rect class="cuadro" width="50" height="50"></rect>
+                    <text class="letraCin" x="20" y="33"></text>
+                </g>
+                <g class="simbolo" transform="translate(430)">
+                    <rect class="cuadro" width="50" height="50"></rect>
+                    <text class="letraCin" x="20" y="33" id="letraComienzo"></text>
+                </g>
+                <g class="simbolo" transform="translate(480)">
+                    <rect class="cuadro" width="50" height="50"></rect>
+                    <text class="letraCin" x="20" y="33" id="letraSiguiente"></text>
+                </g>
             </g>
-            <g class="simbolo" transform="translate(430)">
-                <rect class="cuadro" width="50" height="50"></rect>
-                <text class="letraCin" x="20" y="33" id="letraComienzo"></text>
-            </g>
-            <g class="simbolo" transform="translate(480)">
-                <rect class="cuadro" width="50" height="50"></rect>
-                <text class="letraCin" x="20" y="33" id="letraSiguiente"></text>
-            </g>
-        </g>
-        <rect id="cuadroCabeza" width="60" height="60" x="425" y="5"></rect>
-    </svg>
+            <rect id="cuadroCabeza" width="60" height="60" x="425" y="5"></rect>
+        </svg>
+    </div>
     <br><br><br><br><br><br><br>
     <section id="insercion">
         {% if idioma %}
