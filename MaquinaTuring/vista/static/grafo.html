@@ -27,9 +27,10 @@
     <label for="evaluarPaso" id="eleccionEval">	&#191;evaluar paso a paso?</label>
     <select name="evaluarPaso" id="evaluarPaso">
         <option value="no">No</option>
-        <option value="si" selected>Si</option>
+        <option value="si">Si</option>
     </select>
-    <a id="pasoSelec"></a>
+    <button type="button" id="botonPaso" onclick="controlPasoSeleccionado('null')">Ok</button>
+    <a id="pasoSelec">{paso a paso:no}</a>
     <br>
     <label for="velocidad" id="eleccionVel">Elige la velocidad de ejecucion del grafo y la cinta:</label>
     <input type="range" name="velocidad" id="velocidad" min="0" max="10" value="" onchange="velocidadEjecucion('null')">
