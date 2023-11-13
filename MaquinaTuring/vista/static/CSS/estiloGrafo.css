@@ -213,24 +213,3 @@ th{
     margin-top: 10mm;
     margin-bottom: 10mm;
 }
-
-#cintaContainer {
-    overflow-x: scroll;
-    width: 100%; /* Ancho completo del contenedor */
-    white-space: nowrap; /* Evita saltos de línea dentro del contenedor */
-}
-
-#contCinta {
-    width: auto; /* Ancho automático del contenido */
-}
-
-.simbolo {
-    display: inline-block; /* Alinea los elementos en una fila horizontal */
-    width: 150px; /* Ancho de los símbolos, ajusta según sea necesario */
-    vertical-align: top; /* Alinea los elementos en la parte superior */
-}
-
-.cuadro {
-    width: 50px; /* Ancho de los cuadros, ajusta según sea necesario */
-    height: 50px; /* Altura de los cuadros, ajusta según sea necesario */
-}
