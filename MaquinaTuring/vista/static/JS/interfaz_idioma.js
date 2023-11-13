@@ -1,4 +1,4 @@
-export function interfazIdioma(validacion, idiomaSel) {
+function interfazIdioma(validacion, idiomaSel) {
     if(validacion=="true"){
         idiomaSel=document.getElementById("lenguaje").value;
     }
@@ -40,10 +40,6 @@ export function interfazIdioma(validacion, idiomaSel) {
             document.getElementById("lenguajeSelec").innerText = idiomaSelActual.replace(idiomaSelTrad,"{idioma seleccionado");
             document.getElementById("pasoSelec").innerText = pasoSelActual.replace(pasoSelTrad,"{paso a paso");
             document.getElementById("velocidadSelec").innerText = velSelActual.replace(velSelTrad,"{velocidad seleccionada");
-            /*document.getElementById("eleccionVel").innerText = "elija la velocidad de ejecución del grafo y la pila:";
-            document.getElementById("velocidad").options[0].text="normal";
-            document.getElementById("velocidad").options[1].text="rápido";
-            document.getElementById("velocidad").options[2].text="lento"*/
             if(document.getElementById("mensajeAutomata") != null) {
                 cadenaCompleta=document.getElementById("mensajeAutomata").innerText;
                 primeraParte=obtenerPrimeraParteCad(cadenaCompleta);
@@ -95,11 +91,7 @@ export function interfazIdioma(validacion, idiomaSel) {
             }
             document.getElementById("lenguajeSelec").innerText = idiomaSelActual.replace(idiomaSelTrad,"{selected language");
             document.getElementById("pasoSelec").innerText = pasoSelActual.replace(pasoSelTrad,"{Step by Step");
-            document.getElementById("velocidadSelec").innerText = velSelActual.replace(velSelTrad,"{selected speed");
-            /*document.getElementById("eleccionVel").innerText = "choose the graph and stack execution speed:";
-            document.getElementById("velocidad").options[0].text="normal";
-            document.getElementById("velocidad").options[1].text="fast";
-            document.getElementById("velocidad").options[2].text="slow";*/            
+            document.getElementById("velocidadSelec").innerText = velSelActual.replace(velSelTrad,"{selected speed");           
             if(document.getElementById("mensajeAutomata")!=null){
                 cadenaCompleta=document.getElementById("mensajeAutomata").innerText;
                 primeraParte=obtenerPrimeraParteCad(cadenaCompleta);
@@ -151,11 +143,7 @@ export function interfazIdioma(validacion, idiomaSel) {
             }
             document.getElementById("lenguajeSelec").innerText = idiomaSelActual.replace(idiomaSelTrad,"{langue sélectionnée");
             document.getElementById("pasoSelec").innerText = pasoSelActual.replace(pasoSelTrad,"{pas à pas");
-            document.getElementById("velocidadSelec").innerText = velSelActual.replace(velSelTrad,"{vitesse sélectionnée");
-            /*document.getElementById("eleccionVel").innerText = "choisissez la vitesse d'exécution du graphe et de la pile :";
-            document.getElementById("velocidad").options[0].text="normal";
-            document.getElementById("velocidad").options[1].text="rapide";
-            document.getElementById("velocidad").options[2].text="lent";*/            
+            document.getElementById("velocidadSelec").innerText = velSelActual.replace(velSelTrad,"{vitesse sélectionnée");          
             if(document.getElementById("mensajeAutomata")!=null){
                 cadenaCompleta=document.getElementById("mensajeAutomata").innerText;
                 primeraParte=obtenerPrimeraParteCad(cadenaCompleta);
@@ -183,5 +171,72 @@ export function interfazIdioma(validacion, idiomaSel) {
         break;
     default:
         break;
+    }
+}
+function cambiarIdiomaEstadoHistorial(parteNueva1,parteNueva2,palabraNula,parteNueva2Neg) {
+    let historialEstado=document.getElementsByClassName("estadoPalabra");
+    let cadenaCompleta=null;
+    let primeraParte=null;
+    let segundaParte=null;
+    for (let i=0; i<historialEstado.length; i++){
+        cadenaCompleta=historialEstado[i].innerText;        
+        if (cadenaCompleta.indexOf('"')==-1) {
+            historialEstado[i].innerText=palabraNula;
+        }
+        else{
+            palabraValida=validarPalabra(cadenaCompleta);
+            primeraParte=obtenerPrimeraParteCad(cadenaCompleta);
+            segundaParte=obtenerSegundaParteCad(cadenaCompleta);
+            cadenaCompleta=reemplazarCadena(primeraParte,parteNueva1,cadenaCompleta);
+            if (palabraValida==true) {
+                cadenaCompleta=reemplazarCadena(segundaParte,parteNueva2,cadenaCompleta);
+            }
+            else{
+                if (palabraValida==null) {
+                    cadenaCompleta=reemplazarCadena(segundaParte,palabraNula,cadenaCompleta);     
+                }
+                else{
+                    cadenaCompleta=reemplazarCadena(segundaParte,parteNueva2Neg,cadenaCompleta); 
+                }
+            }
+            historialEstado[i].innerText=cadenaCompleta; 
+        }
+
+    }
+}
+function idiomaSeleccionado(idiomaEscogido) {
+    let url = document.getElementById("evaluador").action;
+    let seleccion = document.getElementById("lenguajeSelec").innerHTML;
+    let indexIdiomaFinal = null;
+
+    if (idiomaEscogido == "null") {
+        idiomaEscogido = document.getElementById("lenguaje").value;
+    }
+
+    let idiomaActual = null;
+    for (let i = url.length; i >= 0; i--) {
+        if (url[i] == "/" && indexIdiomaFinal != null) {
+            idiomaActual = url.substring(i + 1, indexIdiomaFinal);
+            break;
+        }
+        if (url[i] == "/") {
+            indexIdiomaFinal = i;
+        }
+    }
+
+    let seleccionActual = null;
+    for (let j = 0; j < seleccion.length; j++) {
+        if (seleccion[j] == ":") {
+            seleccionActual = seleccion.substring(j + 1);
+            break;
+        }
+    }
+
+    document.getElementById("evaluador").action = url.replace(idiomaActual, idiomaEscogido);
+
+    if (idiomaEscogido == "Espaniol") {
+        document.getElementById("lenguajeSelec").innerHTML = seleccion.replace(seleccionActual, "Español}");
+    } else {
+        document.getElementById("lenguajeSelec").innerHTML = seleccion.replace(seleccionActual, idiomaEscogido + "}");
     }
 }

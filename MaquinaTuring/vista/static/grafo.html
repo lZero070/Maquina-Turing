@@ -9,11 +9,11 @@
     <link rel="stylesheet" href='{% static "CSS/estiloGrafo.css" %}'>
 </head>
 {% if idioma and controlPaso == "no" %}
-<body onload="interfazIdioma('false','{{idioma}}'),mensajeVoz('{{idioma}}'),historialEspacio(),idiomaSeleccionado('{{idioma}}'),controlPasoSeleccionado('{{controlPaso}}'),velocidadEjecucion('{{velocidad}}'),encenderGrafo()">
-{% elif idioma and controlPaso == "si"%}
-<body onload="interfazIdioma('false','{{idioma}}'),mensajeVoz('{{idioma}}'),historialEspacio(),idiomaSeleccionado('{{idioma}}'),encenderGrafo(),controlPasoSeleccionado('{{controlPaso}}'),iniciarControlPaso()">
+<body onload="interfazIdioma('false', '{{ idioma }}'), mensajeVoz('{{ idioma }}'), historialEspacio(), idiomaSeleccionado('{{ idioma }}'), controlPasoSeleccionado('{{ controlPaso }}'), velocidadEjecucion('{{ velocidad }}'), encenderGrafo()">
+{% elif idioma and controlPaso == "si" %}
+<body onload="interfazIdioma('false', '{{ idioma }}'), mensajeVoz('{{ idioma }}'), historialEspacio(), idiomaSeleccionado('{{ idioma }}'), encenderGrafo(), controlPasoSeleccionado('{{ controlPaso }}'), iniciarControlPaso()">
 {% else %}
-<body onload="interfazIdioma('false','{{idioma}}'),historialEspacio()"></body>
+<body onload="interfazIdioma('false', '{{ idioma }}'), historialEspacio()"></body>
 {% endif %}
     <label for="lenguaje" id="eleccionLeng">elija el idioma:</label>
     <select name="lenguaje" id="lenguaje">
@@ -134,5 +134,7 @@
     <script src='{% static "JS/flechasCanvas.js"%}'></script>
     <script src='{% static "JS/grafo.js"%}'></script>
     <script src='{% static "JS/recorridoGrafoCinta.js"%}'></script>
+    <script src="{% static 'JS/interfaz_idioma.js' %}"></script>
+
 </body>
 </html>
