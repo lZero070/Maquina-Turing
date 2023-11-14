@@ -20,6 +20,7 @@ function interfazIdioma(validacion, idiomaSel) {
             document.getElementById("eleccionEval").innerText = "¿evaluar paso a paso?";
             document.getElementById("eleccionVel").innerText = "Elige la velocidad de ejecucion del grafo y la cinta:";
             idiomaSelActual=document.getElementById("lenguajeSelec").innerText;
+            
             for(let i=0; i<idiomaSelActual.length; i++){
                 if (idiomaSelActual[i]==":") {
                    idiomaSelTrad=idiomaSelActual.substring(0,i);
@@ -64,7 +65,13 @@ function interfazIdioma(validacion, idiomaSel) {
             else{
                 document.getElementById("sinHistorial").innerText='"No hay palabras en el historial."';
             }
+            
+
+            if (document.getElementById("validacionPaso")) {
+                document.getElementById("validacionPaso").innerText = "Evaluar paso a paso";
+            }
             break;
+
         case "English":
             document.getElementById("palabra").placeholder="Enter a word...";
             document.getElementById("validacion").innerText="evaluate";
@@ -116,7 +123,12 @@ function interfazIdioma(validacion, idiomaSel) {
             else{
                 document.getElementById("sinHistorial").innerText='"There are no words in the history."';
             }
+            
+            if (document.getElementById("validacionPaso")) {
+                document.getElementById("validacionPaso").innerText = "Évaluer étape par étape";
+            }
             break;
+
         case "Frances":
             document.getElementById("palabra").placeholder="Saisir un mot...";
             document.getElementById("validacion").innerText="Évaluer";
@@ -168,7 +180,11 @@ function interfazIdioma(validacion, idiomaSel) {
             else{
                 document.getElementById("sinHistorial").innerText='"Il n y a pas de mots dans l histoire."';
             }
-        break;
+            
+            if (document.getElementById("validacionPaso")) {
+                document.getElementById("validacionPaso").innerText = "Évaluer étape par étape";
+            }
+            break;
     default:
         break;
     }
