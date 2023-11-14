@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 #from automata.tm.tm  import Tape
 from  automata.tm.ntm  import NTM
 
+##
 class CrearMaquinaTuring:
     @csrf_exempt
     def grafo(request):
